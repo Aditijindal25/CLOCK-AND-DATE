@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clock & Date</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .clock {
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        .date {
+            font-size: 25px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="clock" id="clock"></div>
+    <div class="date" id="date"></div>
+
+    <script>
+        function updateClock() {
+            let now = new Date();
+
+            // Time
+            let hours = String(now.getHours()).padStart(2, '0');
+            let minutes = String(now.getMinutes()).padStart(2, '0');
+            let seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById("clock").textContent = `${hours}:${minutes}:${seconds}`;
+
+            // Date
+            let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById("date").textContent = now.toLocaleDateString('en-IN', options);
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+
+</body>
+</html>
